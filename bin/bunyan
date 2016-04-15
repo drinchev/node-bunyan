@@ -816,13 +816,13 @@ function emitRecord(rec, line, opts, stylize) {
         if (opts.color) {
             var colorFromLevel = {
                 10: 'white',    // TRACE
-                20: 'yellow',   // DEBUG
+                20: 'grey',   // DEBUG
                 30: 'cyan',     // INFO
-                40: 'magenta',  // WARN
+                40: 'yellow',   // WARN
                 50: 'red',      // ERROR
-                60: 'inverse',  // FATAL
+                60: 'red',  // FATAL
             };
-            level = stylize(level, colorFromLevel[rec.level]);
+            level = stylize('●', colorFromLevel[rec.level]);
         }
         delete rec.level;
 
@@ -1056,9 +1056,9 @@ function emitRecord(rec, line, opts, stylize) {
                 extras,
                 details));
         else
-            emit(format('%s %s %s:%s%s\n%s',
-                time,
+            emit(format('   %s  %s %s:%s%s\n%s',
                 level,
+                time,
                 nameStr,
                 onelineMsg,
                 extras,
